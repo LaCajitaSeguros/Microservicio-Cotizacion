@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.Http;
 using Application.Interfaces.ObjetoInformacionParametrizadaInterfaces;
 using Application.Interfaces.VehiculoInterfaces;
+using Application.Interfaces.VersionVehiculoInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
@@ -13,12 +14,15 @@ namespace Application.UseCase.Vehiculos
         private readonly IVehiculosCommand _command;
         private readonly IObtenerInformacionParametrizada _informacionParametrizada;
         private readonly IHttpService _httpService;
+        private readonly IVersionVehiculoService _versionVehiculoService;
 
-        public VehiculoService(IVehiculosCommand command, IObtenerInformacionParametrizada informacionParametrizada, IHttpService httpService)
+
+        public VehiculoService(IVehiculosCommand command, IObtenerInformacionParametrizada informacionParametrizada, IHttpService httpService, IVersionVehiculoService versionVehiculoService)
         {
             _command = command;
             _informacionParametrizada = informacionParametrizada;
             _httpService = httpService;
+            _versionVehiculoService = versionVehiculoService;
         }
 
         public async Task<List<PlanesResponse>> CotizarVehiculo(CrearVehiculoRequest request)
@@ -47,6 +51,13 @@ namespace Application.UseCase.Vehiculos
             var response = await _httpService.GetAsync<List<PlanesResponse>>($"https://localhost:7272/api/Planes/ListaPlanesCotizados?Cotizacion={cotizacion}");
 
             return response;
+        }
+
+        public async Task<VehiculoResponse> ObtenerVehiculo(int versionId) 
+        {
+            var informacionVehiculo = _informacionParametrizada.ObtenerInformacionVehiculo(versionId);
+
+            return informacionVehiculo;
         }
     }
 }

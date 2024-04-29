@@ -1,4 +1,6 @@
 ﻿using Application.Interfaces.VersionVehiculoInterfaces;
+using Application.Response;
+using Application.Util;
 using Domain.Entities;
 
 namespace Application.UseCase.VersionVehiculos
@@ -12,9 +14,36 @@ namespace Application.UseCase.VersionVehiculos
             _query = query;
         }
 
+        public List<VersionResponse> ObtenerListaVersiones(int modeloId)
+        {
+            var queryModelo = _query.ObtenerVersiones(modeloId);
+
+            if(queryModelo.Count < 1)
+            {
+                throw new NotFoundException("No se encontró la versión con el id ingresado.");
+            }
+
+            List<VersionResponse> listaVersiones = new List<VersionResponse>();
+            foreach (var item in queryModelo) 
+            {
+                listaVersiones.Add(new VersionResponse
+                {
+                    id = item.VersionId,
+                    nombre = item.NombreVersion
+                });
+            }
+            
+            return listaVersiones;
+        }
+
         public VersionVehiculo ObtenerVersion(int versionId, int modeloId)
         {
-            return _query.ObtenerVersionPorId(versionId, modeloId);
+            return _query.ObtenerVersion(versionId, modeloId);
+        }
+
+        public VersionVehiculo ObtenerVersionPorId(int versionId)
+        {
+            return _query.ObtenerVersionPorId(versionId);
         }
     }
 }

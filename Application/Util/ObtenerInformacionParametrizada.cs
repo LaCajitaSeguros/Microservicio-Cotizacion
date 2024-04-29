@@ -7,6 +7,7 @@ using Application.Interfaces.ObjetoInformacionParametrizadaInterfaces;
 using Application.Interfaces.RangoEtarioInterfaces;
 using Application.Interfaces.VersionVehiculoInterfaces;
 using Application.Models;
+using Application.Response;
 
 namespace Application.Util
 {
@@ -45,6 +46,19 @@ namespace Application.Util
             objetoParametrizado.version = _versionVehiculoService.ObtenerVersion(request.Automovil.VersionId, request.Automovil.ModeloId);
 
             return objetoParametrizado;
+        }
+
+        public VehiculoResponse ObtenerInformacionVehiculo(int versionId) 
+        {
+            var informacionVersion = _versionVehiculoService.ObtenerVersionPorId(versionId);
+            var informacionModelo = _modeloService.ObtenerModelo(informacionVersion.ModeloId);
+            var informacionMarca = _marcaService.ObtenerValoresMarca(informacionModelo.MarcaId);   
+
+            return new VehiculoResponse { 
+                marca = informacionMarca.NombreMarca,
+                modelo = informacionModelo.NombreModelo,
+                version = informacionVersion.NombreVersion
+            };
         }
         
     }

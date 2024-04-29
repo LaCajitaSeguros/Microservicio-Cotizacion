@@ -13,6 +13,11 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
+        public List<Marca> ObtenerListaMarca()
+        {
+            return _context.Marca.ToList();
+        }
+
         public Marca ObtenerMarca(int marcaId)
         {
             return _context.Marca.FirstOrDefault(m => m.MarcaId == marcaId);
