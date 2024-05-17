@@ -13,14 +13,14 @@ namespace Application.UseCase.Modelo
             _query = query;
         }
 
-        public Domain.Entities.Modelo ObtenerValoresModelos(int modeloId, int marcaId)
+        public  async Task<Domain.Entities.Modelo> ObtenerValoresModelos(int modeloId, int marcaId)
         {
-            return _query.ObtenerModelo(modeloId, marcaId);
+            return await _query.ObtenerModelo(modeloId, marcaId);
         }
 
-        public Domain.Entities.Modelo ObtenerModelo(int modeloId)
+        public async Task<Domain.Entities.Modelo> ObtenerModelo(int modeloId)
         {
-            return _query.ObtenerModeloPorId(modeloId);
+            return await _query.ObtenerModeloPorId(modeloId);
         }
 
         public List<ModeloResponse> ObtenerListaModelos(int marcaId)

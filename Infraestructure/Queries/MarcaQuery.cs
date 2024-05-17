@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.MarcaInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -18,9 +19,9 @@ namespace Infraestructure.Queries
             return _context.Marca.ToList();
         }
 
-        public Marca ObtenerMarca(int marcaId)
+        public async Task<Marca> ObtenerMarca(int marcaId)
         {
-            return _context.Marca.FirstOrDefault(m => m.MarcaId == marcaId);
+            return await _context.Marca.FirstOrDefaultAsync(m => m.MarcaId == marcaId);
         }
     }
 }

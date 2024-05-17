@@ -4,6 +4,6 @@ namespace Application.Interfaces.AnioVehiculosInterfaces
 {
     public interface IAnioVehiculoService
     {
-        AnioVehiculo ObtenerValoresAnioVehiculo(int anioVehiculo);
+        Task<AnioVehiculo> ObtenerValoresAnioVehiculo(int anioVehiculo);
     }
 }

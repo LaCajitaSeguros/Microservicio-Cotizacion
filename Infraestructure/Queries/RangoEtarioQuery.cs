@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.RangoEtarioInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -13,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public RangoEtario ObtenerListaDeRangoEtario(int edad)
+        public async Task<RangoEtario> ObtenerListaDeRangoEtario(int edad)
         {
-            return _context.RangoEtario.FirstOrDefault(re => re.EdadDesde <= edad && re.EdadHasta >= edad);
+            return await _context.RangoEtario.FirstOrDefaultAsync(re => re.EdadDesde <= edad && re.EdadHasta >= edad);
         }
     }
 }

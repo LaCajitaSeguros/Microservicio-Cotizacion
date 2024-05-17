@@ -64,6 +64,15 @@ builder.Services.AddScoped<IModeloQuery, ModeloQuery>();
 builder.Services.AddScoped<HttpClient, HttpClient>();
 builder.Services.AddScoped<IHttpService, HttpService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolitic", app => {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -74,6 +83,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("NewPolitic");
 
 app.UseAuthorization();
 

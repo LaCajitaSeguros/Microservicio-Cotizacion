@@ -4,7 +4,7 @@ namespace Application.Interfaces.MarcaInterfaces
 {
     public interface IMarcaQuery
     {
-        Marca ObtenerMarca(int marcaId);
+        Task<Marca> ObtenerMarca(int marcaId);
         List<Marca> ObtenerListaMarca();
     }
 }

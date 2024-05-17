@@ -12,9 +12,9 @@ namespace Application.UseCase.GNCs
             _query = query;
         }
 
-        public GNC ObtenerObjetoGNC(bool tieneGnc)
+        public async Task<GNC> ObtenerObjetoGNC(bool tieneGnc)
         {
-            return _query.ObtenerGNCPorBooleano(tieneGnc);
+            return await _query.ObtenerGNCPorBooleano(tieneGnc);
         }
     }
 }

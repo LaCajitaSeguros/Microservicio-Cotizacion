@@ -12,9 +12,9 @@ namespace Application.UseCase.RangosEtarios
             _query = query;
         }
 
-        public RangoEtario ObtenerRangoEtario(int edad)
+        public async Task<RangoEtario> ObtenerRangoEtario(int edad)
         {
-            return _query.ObtenerListaDeRangoEtario(edad);
+            return await _query.ObtenerListaDeRangoEtario(edad);
         }
     }
 }

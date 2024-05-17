@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.GNCInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -13,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public GNC ObtenerGNCPorBooleano(bool tieneGnc)
+        public async Task<GNC> ObtenerGNCPorBooleano(bool tieneGnc)
         {
-            return _context.GNC.FirstOrDefault(tg => tg.HasGNC == tieneGnc);
+            return await _context.GNC.FirstOrDefaultAsync(tg => tg.HasGNC == tieneGnc);
         }
     }
 }

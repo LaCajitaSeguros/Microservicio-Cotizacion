@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.VersionVehiculoInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -13,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public VersionVehiculo ObtenerVersion(int versionId, int modeloId)
+        public async Task<VersionVehiculo> ObtenerVersion(int versionId, int modeloId)
         {
-            return _context.Version.FirstOrDefault(vv => vv.VersionId == versionId && vv.ModeloId == modeloId);
+            return await _context.Version.FirstOrDefaultAsync(vv => vv.VersionId == versionId && vv.ModeloId == modeloId);
         }
 
         public List<VersionVehiculo> ObtenerVersiones(int modeloId)
@@ -23,9 +24,9 @@ namespace Infraestructure.Queries
             return _context.Version.Where(vv => vv.ModeloId == modeloId).ToList();
         }
 
-        public VersionVehiculo ObtenerVersionPorId(int versionId)
+        public async Task<VersionVehiculo> ObtenerVersionPorId(int versionId)
         {
-            return _context.Version.FirstOrDefault(vv => vv.VersionId == versionId);
+            return await _context.Version.FirstOrDefaultAsync(vv => vv.VersionId == versionId);
         }
     }
 }

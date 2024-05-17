@@ -30,9 +30,9 @@ namespace Application.UseCase.Marca
             return listaMarca;
         }
 
-        public Domain.Entities.Marca ObtenerValoresMarca(int marcaId)
+        public async Task<Domain.Entities.Marca> ObtenerValoresMarca(int marcaId)
         {
-            return _query.ObtenerMarca(marcaId);
+            return await _query.ObtenerMarca(marcaId);
         }
     }
 }

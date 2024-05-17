@@ -5,9 +5,9 @@ namespace Application.Interfaces.VersionVehiculoInterfaces
 {
     public interface IVersionVehiculoService
     {
-        VersionVehiculo ObtenerVersion(int versionId, int modeloId);
+        Task<VersionVehiculo> ObtenerVersion(int versionId, int modeloId);
 
-        VersionVehiculo ObtenerVersionPorId(int versionId);
+        Task<VersionVehiculo> ObtenerVersionPorId(int versionId);
 
         List<VersionResponse> ObtenerListaVersiones(int modeloId);
     }

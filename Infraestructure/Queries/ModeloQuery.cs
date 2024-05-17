@@ -2,6 +2,7 @@
 using Application.Response;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -14,14 +15,14 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public Modelo ObtenerModelo(int modeloId, int marcaId)
+        public async Task<Modelo> ObtenerModelo(int modeloId, int marcaId)
         {
-            return _context.Modelo.FirstOrDefault(mod => mod.ModeloId == modeloId && mod.MarcaId == marcaId);
+            return await _context.Modelo.FirstOrDefaultAsync(mod => mod.ModeloId == modeloId && mod.MarcaId == marcaId);
         }
 
-        public Modelo ObtenerModeloPorId(int modeloId)
+        public async Task<Modelo> ObtenerModeloPorId(int modeloId)
         {
-            return _context.Modelo.FirstOrDefault(mod => mod.ModeloId == modeloId);
+            return await _context.Modelo.FirstOrDefaultAsync(mod => mod.ModeloId == modeloId);
         }
 
         public List<Modelo> ObtenerModelos(int marcaId)

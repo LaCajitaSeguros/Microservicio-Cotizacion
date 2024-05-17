@@ -27,7 +27,7 @@ namespace Application.UseCase.Vehiculos
 
         public async Task<List<PlanesResponse>> CotizarVehiculo(CrearVehiculoRequest request)
         {
-            var objetoParametrizado = _informacionParametrizada.ObtenerInformacion(request, new ObjetoParametrizado());
+            var objetoParametrizado = await _informacionParametrizada.ObtenerInformacion(request, new ObjetoParametrizado());
             
             if (objetoParametrizado.anioVehiculo == null || objetoParametrizado.rangoEtario == null 
                 || objetoParametrizado.localidad == null || objetoParametrizado.version == null
@@ -55,7 +55,7 @@ namespace Application.UseCase.Vehiculos
 
         public async Task<VehiculoResponse> ObtenerVehiculo(int versionId) 
         {
-            var informacionVehiculo = _informacionParametrizada.ObtenerInformacionVehiculo(versionId);
+            var informacionVehiculo = await _informacionParametrizada.ObtenerInformacionVehiculo(versionId);
 
             return informacionVehiculo;
         }

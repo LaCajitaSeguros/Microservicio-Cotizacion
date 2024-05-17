@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.AnioVehiculosInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -13,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public AnioVehiculo ObtenerVehiculo(int anioVehiculo)
+        public async Task<AnioVehiculo> ObtenerVehiculo(int anioVehiculo)
         {
-            return _context.AnioVehiculo.FirstOrDefault(av => av.AnioVehiculoDesde <= anioVehiculo && av.AnioVehiculoHasta >= anioVehiculo);
+            return await _context.AnioVehiculo.FirstOrDefaultAsync(av => av.AnioVehiculoDesde <= anioVehiculo && av.AnioVehiculoHasta >= anioVehiculo);
         }
     }
 }

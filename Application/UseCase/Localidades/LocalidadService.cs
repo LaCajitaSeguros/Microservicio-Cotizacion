@@ -12,9 +12,14 @@ namespace Application.UseCase.Localidades
             _query = query;
         }
 
-        public Localidad ObtenerLocalidad(string nombre)
+        public List<Localidad> ObtenerListaLocalidades()
         {
-            return _query.ObtenerLocalidadPorNombre(nombre);
+            return _query.ObtenerTodasLasLocalidades();
+        }
+
+        public async Task<Localidad> ObtenerLocalidad(string nombre)
+        {
+            return await _query.ObtenerLocalidadPorNombre(nombre);
         }
     }
 }

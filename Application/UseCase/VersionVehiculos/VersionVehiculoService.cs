@@ -36,14 +36,14 @@ namespace Application.UseCase.VersionVehiculos
             return listaVersiones;
         }
 
-        public VersionVehiculo ObtenerVersion(int versionId, int modeloId)
+        public async Task<VersionVehiculo> ObtenerVersion(int versionId, int modeloId)
         {
-            return _query.ObtenerVersion(versionId, modeloId);
+            return await _query.ObtenerVersion(versionId, modeloId);
         }
 
-        public VersionVehiculo ObtenerVersionPorId(int versionId)
+        public async Task<VersionVehiculo> ObtenerVersionPorId(int versionId)
         {
-            return _query.ObtenerVersionPorId(versionId);
+            return await _query.ObtenerVersionPorId(versionId);
         }
     }
 }

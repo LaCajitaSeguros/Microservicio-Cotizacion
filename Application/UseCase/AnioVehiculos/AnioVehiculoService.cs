@@ -12,9 +12,9 @@ namespace Application.UseCase.AnioVehiculos
             _query = query;
         }
 
-        public AnioVehiculo ObtenerValoresAnioVehiculo(int anioVehiculo)
+        public async Task<AnioVehiculo> ObtenerValoresAnioVehiculo(int anioVehiculo)
         {
-            return _query.ObtenerVehiculo(anioVehiculo);
+            return await _query.ObtenerVehiculo(anioVehiculo);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Application.Interfaces.GNCInterfaces
 {
     public interface IGNCQuery
     {
-        GNC ObtenerGNCPorBooleano(bool tieneGnc);
+        Task<GNC> ObtenerGNCPorBooleano(bool tieneGnc);
     }
 }

@@ -4,6 +4,6 @@ namespace Application.Interfaces.RangoEtarioInterfaces
 {
     public interface IRangoEtarioService
     {
-        RangoEtario ObtenerRangoEtario(int edad);
+        Task<RangoEtario> ObtenerRangoEtario(int edad);
     }
 }

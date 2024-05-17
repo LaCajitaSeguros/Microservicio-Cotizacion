@@ -5,7 +5,7 @@ namespace Application.Interfaces.ObjetoInformacionParametrizadaInterfaces
 {
     public interface IObtenerInformacionParametrizada
     {
-        ObjetoParametrizado ObtenerInformacion(CrearVehiculoRequest request, ObjetoParametrizado objetoParametrizado);
-        VehiculoResponse ObtenerInformacionVehiculo(int versionId);
+        Task<ObjetoParametrizado> ObtenerInformacion(CrearVehiculoRequest request, ObjetoParametrizado objetoParametrizado);
+        Task<VehiculoResponse> ObtenerInformacionVehiculo(int versionId);
     }
 }

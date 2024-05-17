@@ -35,24 +35,24 @@ namespace Application.Util
             _versionVehiculoService = versionVehiculoService;
         }
 
-        public ObjetoParametrizado ObtenerInformacion(CrearVehiculoRequest request, ObjetoParametrizado objetoParametrizado) 
+        public async Task<ObjetoParametrizado> ObtenerInformacion(CrearVehiculoRequest request, ObjetoParametrizado objetoParametrizado) 
         {
-            objetoParametrizado.anioVehiculo = _anioVehiculoService.ObtenerValoresAnioVehiculo(request.Automovil.AnioVehiculo);
-            objetoParametrizado.gnc = _gncService.ObtenerObjetoGNC(request.Automovil.GNC);
-            objetoParametrizado.localidad = _localidadService.ObtenerLocalidad(request.Localidad);
-            objetoParametrizado.rangoEtario = _rangoEtarioService.ObtenerRangoEtario(request.Edad);
-            objetoParametrizado.marca = _marcaService.ObtenerValoresMarca(request.Automovil.MarcaId);
-            objetoParametrizado.modelo = _modeloService.ObtenerValoresModelos(request.Automovil.ModeloId, request.Automovil.MarcaId);
-            objetoParametrizado.version = _versionVehiculoService.ObtenerVersion(request.Automovil.VersionId, request.Automovil.ModeloId);
+            objetoParametrizado.anioVehiculo = await _anioVehiculoService.ObtenerValoresAnioVehiculo(request.Automovil.AnioVehiculo);
+            objetoParametrizado.gnc = await _gncService.ObtenerObjetoGNC(request.Automovil.GNC);
+            objetoParametrizado.localidad = await _localidadService.ObtenerLocalidad(request.Localidad);
+            objetoParametrizado.rangoEtario = await _rangoEtarioService.ObtenerRangoEtario(request.Edad);
+            objetoParametrizado.marca = await _marcaService.ObtenerValoresMarca(request.Automovil.MarcaId);
+            objetoParametrizado.modelo = await _modeloService.ObtenerValoresModelos(request.Automovil.ModeloId, request.Automovil.MarcaId);
+            objetoParametrizado.version = await _versionVehiculoService.ObtenerVersion(request.Automovil.VersionId, request.Automovil.ModeloId);
 
             return objetoParametrizado;
         }
 
-        public VehiculoResponse ObtenerInformacionVehiculo(int versionId) 
+        public async Task<VehiculoResponse> ObtenerInformacionVehiculo(int versionId) 
         {
-            var informacionVersion = _versionVehiculoService.ObtenerVersionPorId(versionId);
-            var informacionModelo = _modeloService.ObtenerModelo(informacionVersion.ModeloId);
-            var informacionMarca = _marcaService.ObtenerValoresMarca(informacionModelo.MarcaId);   
+            var informacionVersion = await _versionVehiculoService.ObtenerVersionPorId(versionId);
+            var informacionModelo = await _modeloService.ObtenerModelo(informacionVersion.ModeloId);
+            var informacionMarca = await _marcaService.ObtenerValoresMarca(informacionModelo.MarcaId);   
 
             return new VehiculoResponse { 
                 marca = informacionMarca.NombreMarca,

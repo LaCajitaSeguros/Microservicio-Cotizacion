@@ -4,6 +4,8 @@ namespace Application.Interfaces.LocalidadInterfaces
 {
     public interface ILocalidadService
     {
-        Localidad ObtenerLocalidad(string nombre);
+        Task<Localidad> ObtenerLocalidad(string nombre);
+
+        List<Localidad> ObtenerListaLocalidades();
     }
 }
