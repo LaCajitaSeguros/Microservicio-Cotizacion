@@ -212,32 +212,7 @@ namespace Infraestructure.Migrations
                     { 26, "General Rodríguez", "0.0002" },
                     { 27, "Villa Ballester", "0.0003" },
                     { 28, "Bella Vista", "0.0002" },
-                    { 29, "Ciudadela", "0.0002" },
-                    { 30, "Quilmes", "0.0003" },
-                    { 31, "Buenos Aires", "0.0008" },
-                    { 32, "CABA", "0.0007" },
-                    { 33, "Catamarca", "0.0005" },
-                    { 34, "Chaco", "0.0006" },
-                    { 35, "Chubut", "0.0004" },
-                    { 36, "Córdoba", "0.0005" },
-                    { 37, "Corrientes", "0.0006" },
-                    { 38, "Entre Ríos", "0.0004" },
-                    { 39, "Formosa", "0.0003" },
-                    { 40, "Jujuy", "0.0005" },
-                    { 41, "La Pampa", "0.0004" },
-                    { 42, "La Rioja", "0.0003" },
-                    { 43, "Mendoza", "0.0005" },
-                    { 44, "Misiones", "0.0006" },
-                    { 45, "Neuquén", "0.0004" },
-                    { 46, "Río Negro", "0.0005" },
-                    { 47, "Salta", "0.0006" },
-                    { 48, "San Juan", "0.0004" },
-                    { 49, "San Luis", "0.0003" },
-                    { 50, "Santa Cruz", "0.0005" },
-                    { 51, "Santa Fe", "0.0006" },
-                    { 52, "Santiago del Estero", "0.0004" },
-                    { 53, "Tierra del Fuego", "0.0003" },
-                    { 54, "Tucumán", "0.0005" }
+                    { 29, "Ciudadela", "0.0002" }
                 });
 
             migrationBuilder.InsertData(

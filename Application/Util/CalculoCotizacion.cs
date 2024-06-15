@@ -5,7 +5,7 @@ namespace Application.Util
 {
     public class CalculoCotizacion
     {
-        private const decimal PORCENTAJEVEHICULO = 0.007M;
+        private const decimal PORCENTAJEVEHICULO = 0.0009M;
         public static decimal CalcularCotizacion(ObjetoParametrizado objetonParametrizado)
         {
             var precioBase = objetonParametrizado.version.PrecioBase;
