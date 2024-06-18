@@ -48,7 +48,7 @@ namespace Application.UseCase.Vehiculos
 
             var cotizacion = Convert.ToInt32(CalculoCotizacion.CalcularCotizacion(objetoParametrizado));
 
-            var response = await _httpService.GetAsync<List<PlanesResponse>>($"https://localhost:7272/api/Planes/ListaPlanesCotizados?Cotizacion={cotizacion}");
+            var response = await _httpService.GetAsync<List<PlanesResponse>>($"https://localhost:7272/api/Planes/PlanesCotizados?Cotizacion={cotizacion}");
 
             return response;
         }
