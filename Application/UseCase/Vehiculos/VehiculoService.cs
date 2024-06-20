@@ -25,7 +25,7 @@ namespace Application.UseCase.Vehiculos
             _versionVehiculoService = versionVehiculoService;
         }
 
-        public async Task<List<PlanesResponse>> CotizarVehiculo(CrearVehiculoRequest request)
+        public async Task<int> CotizarVehiculo(CrearVehiculoRequest request)
         {
             var objetoParametrizado = await _informacionParametrizada.ObtenerInformacion(request, new ObjetoParametrizado());
             
@@ -48,9 +48,7 @@ namespace Application.UseCase.Vehiculos
 
             var cotizacion = Convert.ToInt32(CalculoCotizacion.CalcularCotizacion(objetoParametrizado));
 
-            var response = await _httpService.GetAsync<List<PlanesResponse>>($"https://localhost:7272/api/Planes/PlanesCotizados?Cotizacion={cotizacion}");
-
-            return response;
+            return cotizacion;
         }
 
         public async Task<VehiculoResponse> ObtenerVehiculo(int versionId) 
